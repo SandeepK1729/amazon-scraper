@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+        table {
+            margin: 0 auto;
+            margin-top: 50px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amazon Scraper</h1>
+    <form action="/" method="POST">
+        <input type="text" name="url" placeholder="Enter Amazon URL" required>
+        <input type="submit" value="Scrape">
+    </form>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    {% if data %}
+        {{ data|safe }}
+        <a href="/">Scrape another product</a>
+        <a href="/export?link={{ link }}">Export to CSV</a>
+    {% endif %}
+</body>
+</html>
